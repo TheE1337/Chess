@@ -1,0 +1,4 @@
+gym
+python-chess
+keras
+pandas

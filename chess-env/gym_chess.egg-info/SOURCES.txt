@@ -1,0 +1,7 @@
+README.md
+setup.py
+gym_chess.egg-info/PKG-INFO
+gym_chess.egg-info/SOURCES.txt
+gym_chess.egg-info/dependency_links.txt
+gym_chess.egg-info/requires.txt
+gym_chess.egg-info/top_level.txt

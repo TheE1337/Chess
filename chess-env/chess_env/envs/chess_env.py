@@ -35,7 +35,7 @@ class chessEnv(gym.Env):
           return pieces
 
   def step(self, action):
-    if self.state.isCheckmate:
+    if self.state.is_checkmate():
         self.done = True
         self.reward = check(self.state)
 
@@ -52,27 +52,32 @@ class chessEnv(gym.Env):
   def minimax(state, depth, a, b, maxplayer): #a: -1000, b: +1000 on initial call
       bestmove = ''
       if depth == 0 or state.is_checkmate():
-          return check(state)
+          return check(state), move
       if maxplayer:
           value = -1000
           for move in state.legal_moves:
               tempboard = state
               tempboard.push_san(move)
-              value = max(value, minimax(tempboard, a, b, depth-1, False))
+              tempvalue = minimax(tempboard, a, b, depth-1, False)[1]
+              if (tempvalue >= value) {
+                    bestmove = move
+              }
+              value = max(value, tempvalue)
               a = max (a, value)
               if a >= b:
                   break
-          return value
+          return value, bestmove
       else:
           value = 1000
           for move in state.legal_moves:
               tempboard = state
               tempboard.push_san(move)
-              value = min(value, minimax(tempboard, a, b, depth-1, True))
+              tempvalue = minimax(tempboard, a, b, depth-1, True)[1]
+              value = min(value, tempvalue)
               b = min(b,value)
               if a >= b:
                   break
-          return value
+          return value, bestmove
 
 
 
@@ -80,4 +85,4 @@ class chessEnv(gym.Env):
     self.state.reset()
 
   def render(self, mode='human', close=False):
-      #...
+      return self.state
