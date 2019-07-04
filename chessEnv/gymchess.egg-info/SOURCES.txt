@@ -1,0 +1,7 @@
+README.md
+setup.py
+gymchess.egg-info/PKG-INFO
+gymchess.egg-info/SOURCES.txt
+gymchess.egg-info/dependency_links.txt
+gymchess.egg-info/requires.txt
+gymchess.egg-info/top_level.txt
